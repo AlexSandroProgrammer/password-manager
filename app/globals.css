@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* le colocamos todo el alto de la pagina al body */
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
