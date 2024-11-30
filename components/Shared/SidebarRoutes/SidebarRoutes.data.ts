@@ -38,7 +38,7 @@ export const dataSidebarElements = [
 ];
 
 //* creamos otro arreglo el cual tendra el menu de configuracion
-export const dataSidebarConfiguracion = [
+export const dataSidebarConfiguration = [
   {
     title: "Configuration",
     icon: Settings,
