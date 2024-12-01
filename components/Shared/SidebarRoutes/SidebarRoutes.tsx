@@ -110,12 +110,12 @@ export function SidebarRoutes() {
         </Accordion>
       ))}
 
-      <SingleItem href="/analytic" label="Analitycs" icon={BarChart} />
+      <SingleItem href="/analytic" label="Analitics" icon={BarChart} />
       <SingleItem
         onClick={() => console.log("Close session")}
         href="#"
-        label="Analitycs"
-        icon={BarChart}
+        label="Close Session"
+        icon={DoorClosed}
       />
     </div>
   );
