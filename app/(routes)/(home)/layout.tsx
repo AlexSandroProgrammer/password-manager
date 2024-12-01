@@ -1,15 +1,16 @@
 import { Logo } from "@/components/Shared/Logo";
 import { Sidebar } from "@/components/Shared/Sidebar";
+import { SidebarMobile } from "@/components/Shared/SidebarMobile";
 export default function LayoutRoutes({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <main className="h-full">
-      <div className="flex jutify-between lg:hidden px-6 py-3 items-center bg-blue-500">
+      <div className="flex justify-between lg:hidden px-6 py-3 items-center bg-blue-500">
         <div className="py-1 text-white">
           <Logo />
         </div>
-        <div>SidebarMobile</div>
+        <SidebarMobile />
       </div>
 
       <div className="flex h-full">
