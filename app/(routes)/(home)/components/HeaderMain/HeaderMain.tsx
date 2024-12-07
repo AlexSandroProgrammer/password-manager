@@ -26,6 +26,7 @@ import {
 import { ChevronDown, Icon } from "lucide-react";
 import { dataHeaderMain } from "./HeaderMain.data";
 import { useState } from "react";
+import { FormAddElement } from "../FormAddElement";
 
 export function HeaderMain() {
   // * creamos un estado para manejar el tipo de elemento
@@ -81,7 +82,7 @@ export function HeaderMain() {
           <DialogHeader>
             <DialogTitle>Nuevo Elemento</DialogTitle>
           </DialogHeader>
-          {typeElement === "password" && <p>Form Password</p>}
+          {typeElement === "password" && <FormAddElement />}
           {typeElement === "folder" && <p>Form Folder</p>}
         </DialogContent>
       </Dialog>
