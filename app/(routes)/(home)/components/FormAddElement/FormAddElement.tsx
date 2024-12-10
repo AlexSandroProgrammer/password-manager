@@ -4,10 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-const formSchema = z.object({
-  username: z.string().min(2).max(50),
-});
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,39 +15,80 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { formSchema } from "./FormAddElement.form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export function FormAddElement() {
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      typeElement: "",
+      isFavourite: false, // se debe asignar con un tipo de dato booleano
+      name: "",
+      directory: "",
       username: "",
+      password: "",
+      urlWebsite: "",
+      notes: "",
+      userId: "",
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-  }
+  };
 
   return (
     <div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="md:grid-cols-2 gap-y-2 gap-x-4 grid"
+        >
           <FormField
             control={form.control}
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
+                <FormLabel>¿Que tipo de elemento necesitas?</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select a directory for your password" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="Inicio de Sesion">
+                      Inicio de Sesion
+                    </SelectItem>
+                    <SelectItem value="Tarjeta">Tarjeta</SelectItem>
+                    <SelectItem value="Identidad">Identidad</SelectItem>
+                  </SelectContent>
+                  <FormDescription>
+                    This is your public display name.
+                  </FormDescription>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="isFavourite"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>¿Seleccionar como favorita?</FormLabel>
+                <div className="flex flex-row items-start space-x-3"></div>
                 <FormMessage />
               </FormItem>
             )}

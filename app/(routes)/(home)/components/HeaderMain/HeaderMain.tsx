@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 //* IMPORTAMOS TODOS LOS COMPONENTS DE DIALOG PARA IMPLEMENTARLOS
 import {
@@ -42,7 +41,7 @@ export function HeaderMain() {
     setOpenDropdown(false);
   };
 
-  console.log(typeElement);
+  // console.log(typeElement);
 
   //* creamos el componente para la accion de crear un nuevo elemento
   return (
